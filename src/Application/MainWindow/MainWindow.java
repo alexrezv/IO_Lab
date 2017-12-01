@@ -1,5 +1,7 @@
 package Application.MainWindow;
 
+import Application.FirstApplet.FirstAppletWindow;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -18,15 +20,13 @@ public class MainWindow extends JFrame {
         GridLayout gridLayout = new GridLayout(3,1,10,10);
         contents.setLayout(gridLayout);
 
-        JButton bOne = new JButton("One");
+        JButton bOne = new JButton("Sound Generator");
         JButton bTwo = new JButton("Two");
         JButton bThree = new JButton("Three");
 
-        bOne.setName("one");
-        bTwo.setName("two");
-        bThree.setName("three");
+        FirstAppletWindow faw = null;
 
-        ButtonsListener buttonsListener = new ButtonsListener();
+        ButtonsListener buttonsListener = new ButtonsListener(bOne, faw);
 
         bOne.addActionListener(buttonsListener);
         bTwo.addActionListener(buttonsListener);

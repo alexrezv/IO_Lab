@@ -5,10 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public final class FirstAppletWindow extends JFrame {
-    private static final FirstAppletWindow INSTANCE = new FirstAppletWindow();
 
-    private FirstAppletWindow() {
-        super("First Applet");
+    public FirstAppletWindow() {
+        super("Sound Generator");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         Container contents = getContentPane();
@@ -49,12 +48,6 @@ public final class FirstAppletWindow extends JFrame {
         harmonicPanel.add(noHarmonicBtn);
         harmonicButtonGroup.add(noHarmonicBtn);
 
-        /*String[] harmonicOptions = {"Yes", "No"};
-        Arrays.stream(harmonicOptions).map(JRadioButton::new).forEach(harmonicButton -> {
-            //harmonicButton.addActionListener(buttonsListener);
-            harmonicPanel.add(harmonicButton);
-            harmonicButtonGroup.add(harmonicButton);
-        });*/
         contents.add(harmonicPanel);
 
         //playback controls
@@ -89,9 +82,5 @@ public final class FirstAppletWindow extends JFrame {
         setResizable(false);
 
         setVisible(true);
-    }
-
-    public static FirstAppletWindow getFirstAppletInstance() {
-        return INSTANCE;
     }
 }
