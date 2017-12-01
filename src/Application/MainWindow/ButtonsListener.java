@@ -24,7 +24,8 @@ public class ButtonsListener implements ActionListener {
                 if (faw == null) {
                     faw = new FirstAppletWindow();
                 } else {
-                    System.err.println("There is a faw!!");
+                    faw = null;
+                    faw = new FirstAppletWindow();
                     faw.setVisible(true);
                 }
                 break;
