@@ -1,6 +1,7 @@
 package Application.MainWindow;
 
 import Application.FirstApplet.FirstAppletWindow;
+import Application.SecondApplet.SecondAppletWindow;
 
 import javax.swing.*;
 
@@ -25,8 +26,9 @@ public class MainWindow extends JFrame {
         JButton bThree = new JButton("Three");
 
         FirstAppletWindow faw = null;
+        SecondAppletWindow saw = null;
 
-        ButtonsListener buttonsListener = new ButtonsListener(bOne, faw);
+        ButtonsListener buttonsListener = new ButtonsListener(faw, saw);
 
         bOne.addActionListener(buttonsListener);
         bTwo.addActionListener(buttonsListener);

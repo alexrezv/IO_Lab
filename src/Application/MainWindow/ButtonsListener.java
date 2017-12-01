@@ -1,19 +1,19 @@
 package Application.MainWindow;
 
 import Application.FirstApplet.FirstAppletWindow;
+import Application.SecondApplet.SecondAppletWindow;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ButtonsListener implements ActionListener {
 
-    private JButton bOne;
     private FirstAppletWindow faw;
+    private SecondAppletWindow saw;
 
-    ButtonsListener(JButton bOne, FirstAppletWindow faw) {
-        this.bOne = bOne;
+    ButtonsListener(FirstAppletWindow faw, SecondAppletWindow saw) {
         this.faw = faw;
+        this.saw = saw;
     }
 
     @Override
@@ -30,6 +30,12 @@ public class ButtonsListener implements ActionListener {
                 break;
             case "Two":
                 System.err.println("Key Two was clicked");
+                if (saw == null) {
+                    saw = new SecondAppletWindow();
+                } else {
+                    System.err.println("There is a saw!!");
+                    faw.setVisible(true);
+                }
                 break;
             case "Three":
                 System.err.println("Key Three was clicked");
