@@ -6,7 +6,7 @@ import Application.SecondApplet.SecondAppletWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonsListener implements ActionListener {
+class ButtonsListener implements ActionListener {
 
     private FirstAppletWindow faw;
     private SecondAppletWindow saw;
@@ -29,13 +29,14 @@ public class ButtonsListener implements ActionListener {
                     faw.setVisible(true);
                 }
                 break;
-            case "Two":
+            case "Draw Shapes":
                 System.err.println("Key Two was clicked");
                 if (saw == null) {
                     saw = new SecondAppletWindow();
                 } else {
-                    System.err.println("There is a saw!!");
-                    faw.setVisible(true);
+                    saw = null;
+                    saw = new SecondAppletWindow();
+                    saw.setVisible(true);
                 }
                 break;
             case "Three":

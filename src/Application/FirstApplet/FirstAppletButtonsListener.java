@@ -1,13 +1,11 @@
 package Application.FirstApplet;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FirstAppletButtonsListener implements ActionListener {
+class FirstAppletButtonsListener implements ActionListener {
 
-    private Thread soundGeneratorThread;
+    private final Thread soundGeneratorThread;
 
     FirstAppletButtonsListener(Thread soundGeneratorThread) {
         this.soundGeneratorThread = soundGeneratorThread;
