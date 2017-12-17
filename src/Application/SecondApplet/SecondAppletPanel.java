@@ -5,28 +5,34 @@ import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class SecondAppletWindow extends JFrame {
-    public SecondAppletWindow() {
-        super("Draw Shapes");
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+public class SecondAppletPanel extends JPanel {
+    public SecondAppletPanel() {
 
         String[] figureList = {"Rectangle", "Oval"};
         JLabel figureLabel = new JLabel("Figure");
         JSpinner figureSpinner = new JSpinner(new SpinnerListModel(figureList));
-        String[] colorsList = {"black", "blue", "cyan", "darkGray", "gray", "green", "lightGray", "magenta", "orange",
-                "pink", "red", "white", "yellow"};
+
+        String[] colorsList = {"black", "blue", "cyan",
+                                "darkGray", "gray", "green",
+                                "lightGray", "magenta", "orange",
+                                "pink", "red", "white", "yellow"};
         JLabel colorLabel = new JLabel("Color");
         JScrollPane colorScrollPane = new JScrollPane();
         JList<String> colorList = new JList<>(colorsList);
         colorScrollPane.setViewportView(colorList);
+
         JLabel startXLabel = new JLabel("Start X");
         JSpinner startXSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 5));
+
         JLabel startYLabel = new JLabel("Start Y");
         JSpinner startYSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 5));
+
         JLabel heightLabel = new JLabel("Height");
         JSpinner heightSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 5));
+
         JLabel widthLabel = new JLabel("Width");
         JSpinner widthSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 5));
+
         JButton drawButton = new JButton("Draw");
         JButton clearButton = new JButton("Clear");
 
@@ -48,26 +54,27 @@ public class SecondAppletWindow extends JFrame {
         controlsPanel.add(widthSpinner);
         controlsPanel.add(drawButton);
         controlsPanel.add(clearButton);
-        controlsPanel.setPreferredSize(new Dimension(250, 450));
-        //controlsPanel.setMaximumSize(new Dimension(200,250));
+        controlsPanel.setFloatable(false);
+        controlsPanel.setPreferredSize(new Dimension(200,300));
 
         ShapesPanel shapesPanel = new ShapesPanel();
         shapesPanel.setBorder(new BorderUIResource.LineBorderUIResource(Color.black, 2));
-        shapesPanel.setPreferredSize(new Dimension(500, 500));
 
         //adding elements to the main panel
-        Container contents = getContentPane();
-        GridLayout contentsLayout = new GridLayout(1, 2);
-        contents.setLayout(contentsLayout);
-        contents.add(shapesPanel);
-        contents.add(controlsPanel);
-        setContentPane(contents);
-        pack();
-
-        setSize(1000, 1000);
-        //setResizable(false);
-
-        setVisible(true);
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 0.05;
+        c.weighty = 0.7;
+        c.gridx = 0;
+        c.gridy = 0;
+        add(controlsPanel, c);
+        c.weightx = 0.95;
+        c.weighty = 1;
+        c.gridx = 1;
+        c.gridy = 0;
+        c.fill = GridBagConstraints.BOTH;
+        add(shapesPanel, c);
 
         ActionListener controlsPanelListener = new ControlsPanelListener(figureSpinner, colorList,
                 startXSpinner, startYSpinner, heightSpinner, widthSpinner, shapesPanel);
