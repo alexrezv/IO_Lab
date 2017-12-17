@@ -11,7 +11,7 @@ public final class FirstAppletWindow extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         Container contents = getContentPane();
-        GridLayout gridLayout = new GridLayout(5,2,10,10);
+        GridLayout gridLayout = new GridLayout(5, 2, 10, 10);
         contents.setLayout(gridLayout);
 
         //frequency controls
@@ -22,20 +22,20 @@ public final class FirstAppletWindow extends JFrame {
 
         //duration controls
         JLabel durationLabel = new JLabel("Duration (msec)");
-        JSpinner durationSpinner = new JSpinner(new SpinnerNumberModel(1000,500,10000,100));
+        JSpinner durationSpinner = new JSpinner(new SpinnerNumberModel(1000, 500, 10000, 100));
         contents.add(durationLabel);
         contents.add(durationSpinner);
 
         //volume controls
         JLabel volLabel = new JLabel("Volume (0-100)");
-        JSpinner volSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
+        JSpinner volSpinner = new JSpinner(new SpinnerNumberModel(50, 0, 100, 1));
         contents.add(volLabel);
         contents.add(volSpinner);
 
         //harmonic controls
         JLabel harmonicLabel = new JLabel("Add harmonic?");
         contents.add(harmonicLabel);
-        JPanel harmonicPanel = new JPanel(new GridLayout(1,2,10,10));
+        JPanel harmonicPanel = new JPanel(new GridLayout(1, 2, 10, 10));
         ButtonGroup harmonicButtonGroup = new ButtonGroup();
 
         JToggleButton yesHarmonicBtn = new JToggleButton("Yes");
@@ -78,7 +78,7 @@ public final class FirstAppletWindow extends JFrame {
         setContentPane(contents);
         pack();
 
-        setSize(300,200);
+        setSize(300, 200);
         setResizable(false);
 
         setVisible(true);
