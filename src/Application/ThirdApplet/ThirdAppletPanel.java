@@ -50,10 +50,10 @@ public class ThirdAppletPanel extends JPanel {
         jtb.setFloatable(false);
         //jtb.setPreferredSize(new Dimension(500,400));
 
-        JLabel picture =  new JLabel();
-        picture.setHorizontalAlignment(JLabel.CENTER);
-        picture.setVerticalAlignment(JLabel.CENTER);
-        picture.setIcon(new ImageIcon("./data/java_logo.jpg"));
+        ImagePanel imagePanel =  new ImagePanel("./data/java_logo.jpg");
+        imagePanel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+        imagePanel.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+        //picLabel.setIcon(new ImageIcon("./data/java_logo.jpg"));
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -68,8 +68,11 @@ public class ThirdAppletPanel extends JPanel {
         c.gridx = 1;
         c.gridy = 0;
         c.fill = GridBagConstraints.BOTH;
-        add(picture, c);
+        add(imagePanel, c);
 
-
+        ThirdPanelListener tpl = new ThirdPanelListener(srcColor, resultColor, imagePanel);
+        openFileBtn.addActionListener(tpl);
+        changeColorBtn.addActionListener(tpl);
+        saveFileBtn.addActionListener(tpl);
     }
 }
