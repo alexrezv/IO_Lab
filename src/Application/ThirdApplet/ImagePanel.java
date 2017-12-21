@@ -11,7 +11,7 @@ public class ImagePanel extends JPanel {
 
     private BufferedImage image;
 
-    public ImagePanel(String filename) {
+    ImagePanel(String filename) {
         try {
             image = ImageIO.read(new File(filename));
         } catch (IOException ex) {
@@ -39,13 +39,13 @@ public class ImagePanel extends JPanel {
         repaint();
     }
 
+    public BufferedImage getImage() {
+        return image;
+    }
+
     public void setImage(BufferedImage image) {
         this.image = image;
         repaint();
-    }
-
-    public BufferedImage getImage() {
-        return image;
     }
 
     @Override
@@ -53,7 +53,6 @@ public class ImagePanel extends JPanel {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this); // see javadoc for more info on the parameters
     }
-
 
 
 }

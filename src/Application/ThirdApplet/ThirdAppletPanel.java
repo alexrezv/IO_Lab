@@ -11,11 +11,11 @@ public class ThirdAppletPanel extends JPanel {
         resultColor.setPreviewPanel(new JPanel());
 
         JButton openFileBtn = new JButton("Open file");
-        openFileBtn.setPreferredSize(new Dimension(100,50));
+        openFileBtn.setPreferredSize(new Dimension(100, 50));
         JButton changeColorBtn = new JButton("Change color");
-        changeColorBtn.setPreferredSize(new Dimension(200,50));
+        changeColorBtn.setPreferredSize(new Dimension(200, 50));
         JButton saveFileBtn = new JButton("Save file");
-        saveFileBtn.setPreferredSize(new Dimension(100,50));
+        saveFileBtn.setPreferredSize(new Dimension(100, 50));
 
         JToolBar jtb = new JToolBar();
         jtb.setBackground(Color.lightGray);
@@ -50,7 +50,7 @@ public class ThirdAppletPanel extends JPanel {
         jtb.setFloatable(false);
         //jtb.setPreferredSize(new Dimension(500,400));
 
-        ImagePanel imagePanel =  new ImagePanel("./data/java_logo.jpg");
+        ImagePanel imagePanel = new ImagePanel("./data/java_logo.jpg");
         imagePanel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
         imagePanel.setAlignmentY(JPanel.CENTER_ALIGNMENT);
         //picLabel.setIcon(new ImageIcon("./data/java_logo.jpg"));
