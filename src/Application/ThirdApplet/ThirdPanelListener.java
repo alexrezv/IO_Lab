@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class ThirdPanelListener implements ActionListener {
@@ -31,18 +32,24 @@ public class ThirdPanelListener implements ActionListener {
                 int res = fileChooser.showOpenDialog(new JFrame());
                 if (res == JFileChooser.APPROVE_OPTION) {
                     System.out.println(fileChooser.getSelectedFile().getName());
-                    imagePanel = new ImagePanel(fileChooser.getSelectedFile());
-                    imagePanel.revalidate(); //ADD THIS AS WELL
-                    imagePanel.repaint();  //ADD THIS AS WELL
+                    imagePanel.setImage(fileChooser.getSelectedFile());
                 }
 
                 break;
             case "Change color":
-                System.err.println("change color" + srcColor.getColor().toString());
+                //System.err.println("change color" + srcColor.getColor().getRGB());
+                BufferedImage newImage = ColorChanger.changeColor(imagePanel.getImage(), srcColor.getColor(), resultColor.getColor());
+                imagePanel.setImage(newImage);
 
                 break;
             case "Save file":
                 System.err.println("save file");
+                File savedImage = new File("./savedImage.png");
+                try {
+                    ImageIO.write(imagePanel.getImage(), "png", savedImage);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
 
                 break;
             default:

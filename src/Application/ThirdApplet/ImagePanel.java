@@ -29,10 +29,31 @@ public class ImagePanel extends JPanel {
         }
     }
 
+    public void setImage(File imageFile) {
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException ex) {
+            // handle exception...
+            ex.printStackTrace();
+        }
+        repaint();
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+        repaint();
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this); // see javadoc for more info on the parameters
     }
+
+
 
 }
