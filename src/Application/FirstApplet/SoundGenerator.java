@@ -42,6 +42,13 @@ class SoundGenerator {
             } else {
                 sdl.write(buf, 0, 1);
             }
+            if (Thread.currentThread().isInterrupted()) {
+                System.err.println("SOUND STOPPED");
+                sdl.drain();
+                sdl.stop();
+                sdl.close();
+                break;
+            }
         }
         sdl.drain();
         sdl.stop();

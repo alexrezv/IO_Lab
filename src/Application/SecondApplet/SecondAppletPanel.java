@@ -13,9 +13,9 @@ public class SecondAppletPanel extends JPanel {
         JSpinner figureSpinner = new JSpinner(new SpinnerListModel(figureList));
 
         String[] colorsList = {"black", "blue", "cyan",
-                                "darkGray", "gray", "green",
-                                "lightGray", "magenta", "orange",
-                                "pink", "red", "white", "yellow"};
+                "darkGray", "gray", "green",
+                "lightGray", "magenta", "orange",
+                "pink", "red", "white", "yellow"};
         JLabel colorLabel = new JLabel("Color");
         JScrollPane colorScrollPane = new JScrollPane();
         JList<String> colorList = new JList<>(colorsList);
@@ -55,7 +55,7 @@ public class SecondAppletPanel extends JPanel {
         controlsPanel.add(drawButton);
         controlsPanel.add(clearButton);
         controlsPanel.setFloatable(false);
-        controlsPanel.setPreferredSize(new Dimension(200,300));
+        controlsPanel.setPreferredSize(new Dimension(200, 300));
 
         ShapesPanel shapesPanel = new ShapesPanel();
         shapesPanel.setBorder(new BorderUIResource.LineBorderUIResource(Color.black, 2));

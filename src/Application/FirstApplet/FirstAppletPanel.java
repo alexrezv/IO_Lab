@@ -1,6 +1,5 @@
 package Application.FirstApplet;
 
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.awt.*;
 
@@ -59,25 +58,15 @@ public final class FirstAppletPanel extends JPanel {
             JButton stopBtn = new JButton("Stop");
             stopBtn.setName("stop");
 
-            Thread soundGeneratorThread = new Thread(() -> {
-                try {
-                    SoundGenerator.generateTone((int) freqSpinner.getValue(),
-                            (int) durationSpinner.getValue(),
-                            (int) volSpinner.getValue(),
-                            yesHarmonicBtn.isSelected());
-                } catch (LineUnavailableException e1) {
-                    e1.printStackTrace();
-                }
-                System.err.println("sg stopped");
-            });
 
-            FirstAppletButtonsListener fabl = new FirstAppletButtonsListener(soundGeneratorThread);
+            FirstAppletButtonsListener fabl = new FirstAppletButtonsListener(freqSpinner, durationSpinner,
+                    volSpinner, yesHarmonicBtn);
             playBtn.addActionListener(fabl);
             stopBtn.addActionListener(fabl);
 
             add(playBtn);
             add(stopBtn);
-            setMaximumSize(new Dimension(200,200));
+            setMaximumSize(new Dimension(200, 200));
         }
     }
 }
