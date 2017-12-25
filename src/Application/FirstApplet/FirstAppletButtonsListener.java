@@ -26,9 +26,9 @@ class FirstAppletButtonsListener implements ActionListener {
         switch (e.getActionCommand()) {
             case "Play":
                 if (soundGeneratorThread != null && soundGeneratorThread.isAlive()) {
-                    System.err.println("sg is alive");
+                    System.err.println("SoundGenerator is alive");
                 } else {
-                    System.err.println("sg isn't alive");
+                    System.err.println("SoundGenerator isn't alive, starting");
                     soundGeneratorThread = new Thread(() -> {
                         try {
                             SoundGenerator.generateTone((int) hz.getValue(),
@@ -38,15 +38,19 @@ class FirstAppletButtonsListener implements ActionListener {
                         } catch (LineUnavailableException e1) {
                             e1.printStackTrace();
                         }
-                        System.err.println("sg stopped");
+                        System.err.println("SoundGenerator stopped");
                     });
                     soundGeneratorThread.start();
                     System.err.println("PLay command");
                 }
                 break;
             case "Stop":
-                System.err.println("Stop command");
-                soundGeneratorThread.interrupt();
+                if (soundGeneratorThread != null && soundGeneratorThread.isAlive()) {
+                    System.err.println("SoundGenerator is alive, try to stop");
+                    while (soundGeneratorThread.isAlive()) {
+                        soundGeneratorThread.interrupt();
+                    }
+                }
                 break;
             default:
                 System.err.println(e.getActionCommand());
